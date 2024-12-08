@@ -1,4 +1,7 @@
-
-<div id="<%= dom_id post %>">
-    <h2> <%= post.title %> </h2>
-</div>
+<a href = "<%= post_path(post)%>">
+    <div>
+        <p>
+            <%= post.title%>
+        </p>
+    </div>
+</a>

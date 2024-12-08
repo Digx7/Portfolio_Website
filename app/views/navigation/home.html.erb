@@ -8,11 +8,22 @@
 <div>
     <h1>Projects</h1>
     <ul>
-        
+        <% @projects.each do |project| %>
+            <li>
+                <%= render partial: "posts/chip", locals: {post: project} %>
+            </li>
+        <% end %>
     </ul>
 </div>
 <div>
     <h1>Articles</h1>
+    <ul>
+        <% @articles.each do |article| %>
+            <li>
+                <%= render partial: "posts/chip", locals: {post: article} %>
+            </li>
+        <% end %>
+    </ul>
 </div>
 <div>
     <h1>About</h1>

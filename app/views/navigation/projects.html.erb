@@ -1,2 +1,13 @@
-
 <%= render("nav_bar")%>
+
+<div>
+    <h1>Search Bar</h1>
+</div>
+
+<ul>
+    <% @projects.each do |project| %>
+            <li>
+                <%= render partial: "posts/entry", locals: {post: project} %>
+            </li>
+        <% end %>
+</ul>

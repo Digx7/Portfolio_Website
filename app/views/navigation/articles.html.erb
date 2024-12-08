@@ -1,1 +1,13 @@
 <%= render("nav_bar")%>
+
+<div>
+    <h1>Search Bar</h1>
+</div>
+
+<ul>
+    <% @articles.each do |article| %>
+            <li>
+                <%= render partial: "posts/entry", locals: {post: article} %>
+            </li>
+        <% end %>
+</ul>

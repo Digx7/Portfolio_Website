@@ -1,1 +1,9 @@
 <%= render("nav_bar")%>
+
+<ul>
+    <% @posts.each do |post| %>
+        <li>
+            <%= render partial: "posts/admin_entry", locals: {post: post} %>
+        </li>
+    <% end %>
+</ul>
