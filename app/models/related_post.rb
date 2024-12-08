@@ -1,0 +1,2 @@
+class RelatedPost < ApplicationRecord
+end

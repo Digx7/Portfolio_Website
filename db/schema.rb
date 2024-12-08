@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_08_023406) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_08_023907) do
   create_table "blog_statuses", force: :cascade do |t|
     t.string "status"
     t.datetime "created_at", null: false
@@ -49,6 +49,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_08_023406) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "related_posts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "replies", force: :cascade do |t|
     t.boolean "has_been_edited"
     t.string "content"
@@ -62,6 +67,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_08_023406) do
     t.boolean "user_upvoted"
     t.boolean "user_downvoted"
     t.boolean "user_reported"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_roles", force: :cascade do |t|
+    t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
