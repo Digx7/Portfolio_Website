@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_08_023907) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_08_031006) do
   create_table "blog_statuses", force: :cascade do |t|
     t.string "status"
     t.datetime "created_at", null: false
@@ -29,6 +29,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_08_023907) do
     t.boolean "user_reported"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "comment_id", null: false
+    t.integer "user_id", null: false
+    t.index ["comment_id"], name: "index_comment_reactions_on_comment_id"
+    t.index ["user_id"], name: "index_comment_reactions_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -38,6 +42,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_08_023907) do
     t.integer "downvote_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "post_id", null: false
+    t.integer "user_id", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -47,6 +55,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_08_023907) do
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "blog_type_id", null: false
+    t.integer "blog_status_id", null: false
+    t.index ["blog_status_id"], name: "index_posts_on_blog_status_id"
+    t.index ["blog_type_id"], name: "index_posts_on_blog_type_id"
   end
 
   create_table "related_posts", force: :cascade do |t|
@@ -61,6 +73,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_08_023907) do
     t.integer "downvote_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "comment_id", null: false
+    t.integer "user_id", null: false
+    t.index ["comment_id"], name: "index_replies_on_comment_id"
+    t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
   create_table "reply_reactions", force: :cascade do |t|
@@ -69,6 +85,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_08_023907) do
     t.boolean "user_reported"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "reply_id", null: false
+    t.integer "user_id", null: false
+    t.index ["reply_id"], name: "index_reply_reactions_on_reply_id"
+    t.index ["user_id"], name: "index_reply_reactions_on_user_id"
   end
 
   create_table "user_roles", force: :cascade do |t|
@@ -86,5 +106,19 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_08_023907) do
     t.integer "report_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_role_id", null: false
+    t.index ["user_role_id"], name: "index_users_on_user_role_id"
   end
+
+  add_foreign_key "comment_reactions", "comments"
+  add_foreign_key "comment_reactions", "users"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
+  add_foreign_key "posts", "blog_statuses"
+  add_foreign_key "posts", "blog_types"
+  add_foreign_key "replies", "comments"
+  add_foreign_key "replies", "users"
+  add_foreign_key "reply_reactions", "replies"
+  add_foreign_key "reply_reactions", "users"
+  add_foreign_key "users", "user_roles"
 end
