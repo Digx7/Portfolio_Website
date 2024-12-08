@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  has_been_edited: false
+  content: MyString
+  upvote_count: 1
+  downvote_count: 1
+
+two:
+  has_been_edited: false
+  content: MyString
+  upvote_count: 1
+  downvote_count: 1

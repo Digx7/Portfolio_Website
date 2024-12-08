@@ -1,0 +1,32 @@
+<%= form_with(model: comment_reaction) do |form| %>
+  <% if comment_reaction.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(comment_reaction.errors.count, "error") %> prohibited this comment_reaction from being saved:</h2>
+
+      <ul>
+        <% comment_reaction.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :user_upvoted, style: "display: block" %>
+    <%= form.check_box :user_upvoted %>
+  </div>
+
+  <div>
+    <%= form.label :user_downvoted, style: "display: block" %>
+    <%= form.check_box :user_downvoted %>
+  </div>
+
+  <div>
+    <%= form.label :user_reported, style: "display: block" %>
+    <%= form.check_box :user_reported %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

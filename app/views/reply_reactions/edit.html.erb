@@ -1,0 +1,12 @@
+<% content_for :title, "Editing reply reaction" %>
+
+<h1>Editing reply reaction</h1>
+
+<%= render "form", reply_reaction: @reply_reaction %>
+
+<br>
+
+<div>
+  <%= link_to "Show this reply reaction", @reply_reaction %> |
+  <%= link_to "Back to reply reactions", reply_reactions_path %>
+</div>

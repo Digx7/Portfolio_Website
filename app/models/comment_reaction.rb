@@ -1,0 +1,2 @@
+class CommentReaction < ApplicationRecord
+end

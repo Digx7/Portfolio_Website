@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @reply_reaction %>
+
+<div>
+  <%= link_to "Edit this reply reaction", edit_reply_reaction_path(@reply_reaction) %> |
+  <%= link_to "Back to reply reactions", reply_reactions_path %>
+
+  <%= button_to "Destroy this reply reaction", @reply_reaction, method: :delete %>
+</div>

@@ -1,0 +1,11 @@
+<% content_for :title, "New comment reaction" %>
+
+<h1>New comment reaction</h1>
+
+<%= render "form", comment_reaction: @comment_reaction %>
+
+<br>
+
+<div>
+  <%= link_to "Back to comment reactions", comment_reactions_path %>
+</div>
