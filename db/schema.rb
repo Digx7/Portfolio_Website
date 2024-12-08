@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_08_034652) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_08_035929) do
   create_table "blog_statuses", force: :cascade do |t|
     t.string "status"
     t.datetime "created_at", null: false
@@ -108,6 +108,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_08_034652) do
     t.datetime "updated_at", null: false
     t.integer "user_role_id", null: false
     t.index ["user_role_id"], name: "index_users_on_user_role_id"
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "comment_reactions", "comments"
