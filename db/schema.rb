@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_08_033533) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_08_034652) do
   create_table "blog_statuses", force: :cascade do |t|
     t.string "status"
     t.datetime "created_at", null: false
@@ -24,9 +24,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_08_033533) do
   end
 
   create_table "comment_reactions", force: :cascade do |t|
-    t.boolean "user_upvoted"
-    t.boolean "user_downvoted"
-    t.boolean "user_reported"
+    t.boolean "user_upvoted", default: false
+    t.boolean "user_downvoted", default: false
+    t.boolean "user_reported", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "comment_id", null: false
@@ -36,10 +36,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_08_033533) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.boolean "has_been_edited"
-    t.string "content"
-    t.integer "upvote_count"
-    t.integer "downvote_count"
+    t.boolean "has_been_edited", default: false
+    t.string "content", default: "Content"
+    t.integer "upvote_count", default: 0
+    t.integer "downvote_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "post_id", null: false
@@ -49,10 +49,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_08_033533) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.string "subtitle"
-    t.string "video_link"
-    t.string "content"
+    t.string "title", default: "Title"
+    t.string "subtitle", default: "Sub-Title"
+    t.string "video_link", default: "https://youtu.be/U2ihtf_wK5Y?si=duXU3Brh0qvx-6-g"
+    t.string "content", default: "Content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "blog_type_id", null: false
@@ -67,10 +67,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_08_033533) do
   end
 
   create_table "replies", force: :cascade do |t|
-    t.boolean "has_been_edited"
-    t.string "content"
-    t.integer "upvote_count"
-    t.integer "downvote_count"
+    t.boolean "has_been_edited", default: false
+    t.string "content", default: "Content"
+    t.integer "upvote_count", default: 0
+    t.integer "downvote_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "comment_id", null: false
@@ -80,9 +80,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_08_033533) do
   end
 
   create_table "reply_reactions", force: :cascade do |t|
-    t.boolean "user_upvoted"
-    t.boolean "user_downvoted"
-    t.boolean "user_reported"
+    t.boolean "user_upvoted", default: false
+    t.boolean "user_downvoted", default: false
+    t.boolean "user_reported", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "reply_id", null: false
@@ -98,12 +98,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_08_033533) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "email"
-    t.string "password_hash"
+    t.string "username", default: "JohnDoe"
+    t.string "email", default: "JohnDoe@hotmail.com"
+    t.string "password_hash", default: "12345"
     t.binary "profile_icon"
-    t.integer "coment_count"
-    t.integer "report_count"
+    t.integer "coment_count", default: 0
+    t.integer "report_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_role_id", null: false
