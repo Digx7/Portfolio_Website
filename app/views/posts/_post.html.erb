@@ -1,22 +1,22 @@
 <div id="<%= dom_id post %>">
-  <p>
-    <strong>Title:</strong>
-    <%= post.title %>
-  </p>
+  
+  <div id="Post_Heading">
+    <h1> <%= post.title %> </h1>
+    <h2> <%= post.subtitle %> </h2>
+    <p> <%= post.blog_type_id %> </p>
+    <p> <%= post.updated_at %> </p>
+    <p> <%= post.created_at %> </p>
+  <div>
 
-  <p>
-    <strong>Subtitle:</strong>
-    <%= post.subtitle %>
-  </p>
+  <div id="Post_Sidbar">
+    <p>Sidbar</p>
+  </div>
+  
+  <div id="Post_Video">
+    <p>Video</p>
+  </div>
 
-  <p>
-    <strong>Video link:</strong>
-    <%= post.video_link %>
-  </p>
-
-  <p>
-    <strong>Content:</strong>
+  <div id="Post_Content">
     <%= post.content %>
-  </p>
-
+  </div>
 </div>
